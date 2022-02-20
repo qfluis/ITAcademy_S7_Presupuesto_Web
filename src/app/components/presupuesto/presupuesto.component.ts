@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsBudget } from './interfaces';
+
+
 
 @Component({
   selector: 'app-presupuesto',
@@ -6,23 +9,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./presupuesto.component.scss']
 })
 export class PresupuestoComponent implements OnInit {
-  totalBudget:number = 0;
-  /*webPrice:number = 0;
-  seoPrice:number = 0;
-  addsPrice:number = 0;*/
 
+  itemsBudget:ItemsBudget = {
+    web: {checked: false, price: 500},
+    seo: {checked: false, price: 300},
+    adds: {checked: false, price: 200}
+  }
+
+  totalBudget:number = 0;
+  
   constructor() {}
 
   ngOnInit(): void {
   }
 
   calculateTotalBudget(event:Event){
-    const element:any = event.target;
-    if(element.checked) {
-      this.totalBudget += parseInt(element.value);
-    } else {
-      this.totalBudget -= parseInt(element.value);
-    }    
+    let total:number = 0;
+    const items = this.itemsBudget;
+
+    if (items.web.checked) total+=items.web.price;
+    if (items.seo.checked) total+=items.seo.price;
+    if (items.adds.checked) total+=items.adds.price;
+
+    this.totalBudget = total;
+
+    /*
+    for(let elem in this.itemsBudget){
+      if (this.itemsBudget.hasOwnProperty(elem)){
+        console.log(this.itemsBudget[elem]);
+      }      
+    }
+    this.totalBudget = total;
+    */
+
+    
+    
   }
 
 }

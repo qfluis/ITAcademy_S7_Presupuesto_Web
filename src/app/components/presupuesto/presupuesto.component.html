@@ -1,7 +1,7 @@
 <p>¿Qué quieres hacer?</p>
 <form>
-    <div><input (change)="calculateTotalBudget($event)" type="checkbox" value="500">Una página web (500€)</div>
-    <div><input (change)="calculateTotalBudget($event)" type="checkbox" value="300">Una consultoria SEO (300€)</div>
-    <div><input (change)="calculateTotalBudget($event)" type="checkbox" value="200">Una campaña de Google Ads (200€)</div>
+    <div><input name="web" [(ngModel)]="itemsBudget.web.checked" (change)="calculateTotalBudget($event)" type="checkbox" value="500">Una página web (500€)</div>
+    <div><input name="seo" [(ngModel)]="itemsBudget.seo.checked" (change)="calculateTotalBudget($event)" type="checkbox" value="300">Una consultoria SEO (300€)</div>
+    <div><input name="adds" [(ngModel)]="itemsBudget.adds.checked" (change)="calculateTotalBudget($event)" type="checkbox" value="200">Una campaña de Google Ads (200€)</div>
     <div>Precio: {{totalBudget}} €</div>
 </form>
