@@ -1,7 +1,7 @@
 export interface ItemsBudget {
     web: ItemBudget
     seo:ItemBudget
-    adds:ItemBudget
+    ads:ItemBudget
   }
   
 export interface ItemBudget {

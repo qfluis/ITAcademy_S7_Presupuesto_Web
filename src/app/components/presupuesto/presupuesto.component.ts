@@ -13,7 +13,7 @@ export class PresupuestoComponent implements OnInit {
   itemsBudget:ItemsBudget = {
     web: {checked: false, price: 500},
     seo: {checked: false, price: 300},
-    adds: {checked: false, price: 200}
+    ads: {checked: false, price: 200}
   }
 
   totalBudget:number = 0;
@@ -29,7 +29,7 @@ export class PresupuestoComponent implements OnInit {
 
     if (items.web.checked) total+=items.web.price;
     if (items.seo.checked) total+=items.seo.price;
-    if (items.adds.checked) total+=items.adds.price;
+    if (items.ads.checked) total+=items.ads.price;
 
     this.totalBudget = total;
 
