@@ -1,7 +1,16 @@
 <div>
-    <form>
-        <p>Número de páginas <input type="number" name="pages" [(ngModel)]="webDetails.pages" (change)="inputChange()"> </p>
-        <p>Número de idiomas <input type="number" name="languages" [(ngModel)]="webDetails.languages" (change)="inputChange()"> </p>
-    </form>
-    
+    <form [formGroup]="webForm"> 
+        <p>Número de páginas <input formControlName="pages" 
+                                    type="number" 
+                                    name="pages" 
+                                    [(ngModel)]="webDetails.pages" 
+                                    (change)="inputChange()"> </p>
+        <p>Número de idiomas <input formControlName="languages" 
+                                    type="number" 
+                                    name="languages" 
+                                    [(ngModel)]="webDetails.languages" 
+                                    (change)="inputChange()"> </p>
+        
+        <p *ngIf="webForm.invalid" class="error">Introduce valores numéricos válidos</p>
+    </form>    
 </div>

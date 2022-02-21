@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebDetails } from './interfaces';
 import { PresupuestoService } from '../../services/presupuesto.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-panel',
@@ -9,11 +10,20 @@ import { PresupuestoService } from '../../services/presupuesto.service';
 })
 export class PanelComponent implements OnInit {
 
+
+  webForm: FormGroup;
+
   get webDetails() {
     return this.presupuestoService.webDetails;
   }     
 
-  constructor(private presupuestoService:PresupuestoService) { }
+  constructor(private presupuestoService:PresupuestoService, 
+              private _builder:FormBuilder) {
+    this.webForm = this._builder.group({
+      pages:['',Validators.compose([Validators.required, Validators.min(0), Validators.max(99999)])],
+      languages:['',Validators.compose([Validators.required, Validators.min(0), Validators.max(1000)])]
+    });
+  }
 
   ngOnInit(): void {
   }
