@@ -1,4 +1,5 @@
 <div>
+    <!--
     <form [formGroup]="webForm"> 
         <p>Número de páginas <input formControlName="pages" 
                                     type="number" 
@@ -11,6 +12,10 @@
                                     [(ngModel)]="webDetails.languages" 
                                     (change)="inputChange()"> </p>
         
-        <p *ngIf="webForm.invalid" class="error">Introduce valores numéricos válidos</p>
-    </form>    
+        <p *ngIf="webForm.invalid" class="error">Introduce valores numéricos válidos</p>     
+
+
+    </form>    -->
+    <app-selector-numerico nombreCampo="Número de páginas"></app-selector-numerico>
+    <app-selector-numerico nombreCampo="Número de idiomas"></app-selector-numerico>
 </div>
