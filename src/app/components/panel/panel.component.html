@@ -1,8 +1,8 @@
-<div class="container">
-    <div class="row">    
-        <div class=>número de páginas</div><app-selector-numerico (onValueChange)="updatePages( $event )" ></app-selector-numerico>
+<div class="panel container">
+    <div class="row align-items-center">    
+        <div class="col-7" >número de páginas</div><app-selector-numerico class="col-5" (onValueChange)="updatePages( $event )" ></app-selector-numerico>
     </div>
-    <div class="row">    
-        <div>Número de idiomas</div><app-selector-numerico (onValueChange)="updateLanguages( $event )" ></app-selector-numerico>
+    <div class="row align-items-center">    
+        <div class="col-7">Número de idiomas</div><app-selector-numerico class="col-5" (onValueChange)="updateLanguages( $event )" ></app-selector-numerico>
     </div>
 </div>

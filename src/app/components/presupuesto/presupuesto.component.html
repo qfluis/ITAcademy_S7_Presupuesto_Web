@@ -1,8 +1,8 @@
 <p>¿Qué quieres hacer?</p>
 <form>
-    <div><input name="web" [(ngModel)]="itemsBudget.web.checked" (change)="updateBudget()" type="checkbox" >Una página web ({{itemsBudget.web.price}}€)</div>
+    <div><input class="form-check-input" name="web" [(ngModel)]="itemsBudget.web.checked" (change)="updateBudget()" type="checkbox" >&nbsp;<label class="form-check-label">Una página web ({{itemsBudget.web.price}}€)</label></div>
     <app-panel *ngIf="itemsBudget.web.checked"></app-panel>
-    <div><input name="seo" [(ngModel)]="itemsBudget.seo.checked" (change)="updateBudget()" type="checkbox" >Una consultoria SEO ({{itemsBudget.seo.price}}€)</div>
-    <div><input name="adds" [(ngModel)]="itemsBudget.ads.checked" (change)="updateBudget()" type="checkbox" >Una campaña de Google Ads ({{itemsBudget.ads.price}}€)</div>
+    <div><input class="form-check-input" name="seo" [(ngModel)]="itemsBudget.seo.checked" (change)="updateBudget()" type="checkbox" >&nbsp;<label class="form-check-label">Una consultoria SEO ({{itemsBudget.seo.price}}€)</label></div>
+    <div><input class="form-check-input" name="adds" [(ngModel)]="itemsBudget.ads.checked" (change)="updateBudget()" type="checkbox" >&nbsp;<label class="form-check-label">Una campaña de Google Ads ({{itemsBudget.ads.price}}€)</label></div>
     <div>Precio: {{totalBudget}} €</div>
 </form>

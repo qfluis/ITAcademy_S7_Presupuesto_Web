@@ -3,29 +3,12 @@
     animation-duration: 1s ;
 }
 
-.container{
-    max-width: 300px;
+.panel{
+    max-width: 400px;
     border: 3px solid black;
     padding:1rem;
     border-radius: 1rem;
     margin: 1rem 0 1rem 0;   
-}
-.row{
-    display:flex;
-    align-items: center;
-    
-    //width:fit-content;
-    
-}
-.row div {
-    flex-basis: 50%;
-    
-}
-.error {
-    padding:1rem;
-    border-radius:1rem;
-    background-color: red;
-    color:white;
 }
 
 

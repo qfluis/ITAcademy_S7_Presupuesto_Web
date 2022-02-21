@@ -1,3 +1,25 @@
+input {
+    width: 3rem;
+    border:none;
+}
+
+button {
+    background-color: #F77754;
+    color:white;
+    //padding:0.5rem;
+    border:none;
+    border-radius: 0.5rem;
+    //font-size: 1.2rem;
+    width:1.5rem;
+    height:1.5rem;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+/*
 div {
     margin:0.5rem;
     display:flex;
@@ -10,10 +32,7 @@ div {
 form {
     display:inline-block;
 }
-input {
-    width: 2rem;
-    border:none;
-}
+
 
 button {
     background-color: #F77754;
@@ -24,4 +43,4 @@ button {
     font-size: 1.5rem;
     width:2rem;
     height:2rem;
-}
+}*/
