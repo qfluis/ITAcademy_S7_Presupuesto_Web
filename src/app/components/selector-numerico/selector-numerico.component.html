@@ -1,5 +1,4 @@
 <div>
-{{nombreCampo}}
 <button (click)="add(1)">+</button>
 <form [formGroup]="webForm"> 
     <input formControlName="input" 
@@ -8,5 +7,5 @@
                                 (change)="inputChange()">     
 </form>    
 <button (click)="add(-1)">-</button>
-<p *ngIf="webForm.invalid" class="error">Introduce valores numéricos válidos</p>
 </div>
+<!--<p *ngIf="webForm.invalid" class="error">Introduce valores numéricos válidos</p>-->

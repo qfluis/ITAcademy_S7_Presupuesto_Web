@@ -1,10 +1,25 @@
-div {
-    //max-width: 400px;
-    width:fit-content;
+* {
+    animation-name: aparecer;
+    animation-duration: 1s ;
+}
+
+.container{
+    max-width: 300px;
     border: 3px solid black;
     padding:1rem;
     border-radius: 1rem;
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 0 1rem 0;   
+}
+.row{
+    display:flex;
+    align-items: center;
+    
+    //width:fit-content;
+    
+}
+.row div {
+    flex-basis: 50%;
+    
 }
 .error {
     padding:1rem;
@@ -12,3 +27,18 @@ div {
     background-color: red;
     color:white;
 }
+
+
+
+@keyframes aparecer {
+    from {
+        //height: 0%;
+        //max-width: 0px;
+        opacity: 0;
+    }
+    to {
+        //height:100%;
+        //max-width: 300px;
+        opacity: 100;
+    }
+  }

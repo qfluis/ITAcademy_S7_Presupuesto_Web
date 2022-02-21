@@ -34,7 +34,10 @@ export class PresupuestoService {
 
     if (items.web.checked){
       total+=items.web.price + (this.webDetails.pages * this.webDetails.languages * 30);
-    } 
+    } else {
+      this.webDetails.languages = 1;
+      this.webDetails.pages = 1;
+    }
     if (items.seo.checked) total+=items.seo.price;
     if (items.ads.checked) total+=items.ads.price;
 

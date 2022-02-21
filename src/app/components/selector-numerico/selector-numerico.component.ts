@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,26 +6,31 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './selector-numerico.component.html',
   styleUrls: ['./selector-numerico.component.scss']
 })
-export class SelectorNumericoComponent implements OnInit, AfterViewInit {
+export class SelectorNumericoComponent {
 
   webForm: FormGroup;
-  @Input() nombreCampo:string = "";
-  inputValue:number=1;
+
+  //@Input() valorInicial:number = 1;
+
+  @Output() onValueChange = new EventEmitter<number>();
+  
   @ViewChild('inputControl') inputControl!: ElementRef<HTMLInputElement>;
 
 
   constructor(private _builder:FormBuilder) {
     this.webForm = this._builder.group({
-      input:['',Validators.compose([Validators.required, Validators.min(0), Validators.max(99999)])]    
+      input:[1,Validators.compose([Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)])]    
     });
-
   }
 
   inputChange(){
-    this.inputValue = parseInt(this.inputControl.nativeElement.value);
-    if (!(this.inputValue>0)) {
+    let inputValue = parseInt(this.inputControl.nativeElement.value);
+    if (!(inputValue>0)) {
+      inputValue = 1;
       this.inputControl.nativeElement.value = "1";
-    } 
+      this.webForm.updateValueAndValidity();
+    }
+    this.onValueChange.emit(inputValue);
   }
 
   add(num:number){
@@ -33,11 +38,7 @@ export class SelectorNumericoComponent implements OnInit, AfterViewInit {
     this.inputChange();
   }
 
-  ngOnInit(): void {
-  }
-  ngAfterViewInit():void {
-    this.inputControl.nativeElement.value = "1";
-  }
+  
 
 
     
