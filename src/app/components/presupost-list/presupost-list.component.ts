@@ -18,7 +18,7 @@ export class PresupostListComponent implements OnInit {
   @ViewChild('search') search!:ElementRef<HTMLInputElement>;
 
   constructor(private presupuestoService:PresupuestoService) {
-    this.orderByOriginal();
+    //this.orderByOriginal();
   }
 
   ngOnInit(): void {
@@ -59,16 +59,19 @@ export class PresupostListComponent implements OnInit {
   }
   orderByOriginal(){
     this.listaPresupuestos = [...this.listaPresupuestosOriginal];
-    //console.log(this.search);
-    //this.search.nativeElement.value = " ";
+    
+    this.search.nativeElement.value = "";
+    // Da error la applicación
+
+    
     //this.orderByFecha();
     //this.orderByPresupuesto();
     //this.orderByNombre(); 
   }
 
-  filtrarPresupuesto(event:any) {
+  filtrarPresupuesto() {
     this.listaPresupuestos = [...this.listaPresupuestosOriginal];
-    const palabra = event.srcElement.value;
+    const palabra = this.search.nativeElement.value;
     this.listaPresupuestos = this.listaPresupuestos.filter((item:Presupuesto)=>{
       return item.nombrePresupuesto.toLowerCase().includes(palabra.toLowerCase());
     });
