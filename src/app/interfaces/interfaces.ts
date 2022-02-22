@@ -4,6 +4,7 @@ export interface Presupuesto {
     totalBudget: number;
     itemsBudget: ItemsBudget;
     webDetails: WebDetails;
+    fecha: string;
 }
 
 

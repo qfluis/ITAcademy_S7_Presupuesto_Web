@@ -6,7 +6,104 @@ import { ItemsBudget, Presupuesto, WebDetails } from '../interfaces/interfaces';
 })
 export class PresupuestoService {
 
-  listaPresupuestos:Presupuesto[] = [];
+  listaPresupuestos:Presupuesto[] = [
+      {
+          "nombreCliente": "Luis",
+          "nombrePresupuesto": "Web básica",
+          "itemsBudget": {
+              "web": {
+                  "checked": true,
+                  "price": 500
+              },
+              "seo": {
+                  "checked": false,
+                  "price": 300
+              },
+              "ads": {
+                  "checked": false,
+                  "price": 200
+              }
+          },
+          "webDetails": {
+              "pages": 1,
+              "languages": 1
+          },
+          "totalBudget": 530,
+          "fecha": "2022-02-15"
+      },
+      {
+          "nombreCliente": "XYZ",
+          "nombrePresupuesto": "Web corporativa",
+          "itemsBudget": {
+              "web": {
+                  "checked": true,
+                  "price": 500
+              },
+              "seo": {
+                  "checked": true,
+                  "price": 300
+              },
+              "ads": {
+                  "checked": true,
+                  "price": 200
+              }
+          },
+          "webDetails": {
+              "pages": 10,
+              "languages": 8
+          },
+          "totalBudget": 3400,
+          "fecha": "2022-02-22"
+      },
+      {
+          "nombreCliente": "Microsoft",
+          "nombrePresupuesto": "Consultoria SEO",
+          "itemsBudget": {
+              "web": {
+                  "checked": false,
+                  "price": 500
+              },
+              "seo": {
+                  "checked": true,
+                  "price": 300
+              },
+              "ads": {
+                  "checked": false,
+                  "price": 200
+              }
+          },
+          "webDetails": {
+              "pages": 1,
+              "languages": 1
+          },
+          "totalBudget": 300,
+          "fecha": "2022-02-20"
+      },
+      {
+          "nombreCliente": "Facebook",
+          "nombrePresupuesto": "Publi",
+          "itemsBudget": {
+              "web": {
+                  "checked": false,
+                  "price": 500
+              },
+              "seo": {
+                  "checked": false,
+                  "price": 300
+              },
+              "ads": {
+                  "checked": true,
+                  "price": 200
+              }
+          },
+          "webDetails": {
+              "pages": 1,
+              "languages": 1
+          },
+          "totalBudget": 200,
+          "fecha": "2022-02-19"
+      }  
+  ];
 
   totalBudget:number = 0;
 
@@ -54,15 +151,21 @@ export class PresupuestoService {
     */
   }
   guardarPresupuesto(nombrePresupuesto:string, nombreCliente:string) {
+    const today:Date = new Date();
+    //const fecha:string = today.getFullYear() + "/" + today.getMonth() + "/" + today.getDay();
+    const fecha = today.toISOString().split("T")[0];
     this.listaPresupuestos.push(
       {
         nombreCliente: nombreCliente,
         nombrePresupuesto: nombrePresupuesto,
         itemsBudget: this.itemsBudget,
         webDetails: this.webDetails,
-        totalBudget: this.totalBudget
+        totalBudget: this.totalBudget,
+        fecha: fecha
       }
     );
+    console.log(this.listaPresupuestos);
+    this.orderByOriginal();
   }
   resetPresupuesto(){
     this.itemsBudget = {
@@ -75,5 +178,43 @@ export class PresupuestoService {
       languages: 1
     };
     this.totalBudget = 0;
+  }
+  orderByPresupuesto () {
+    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
+      if(a.nombrePresupuesto > b.nombrePresupuesto){
+        return 1;
+      } else if (a.nombrePresupuesto < b.nombrePresupuesto) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });    
+  }
+  orderByDate () {
+    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
+      if(a.fecha > b.fecha){
+        return 1;
+      } else if (a.fecha < b.fecha) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }); 
+  }
+  orderByNombre () {
+    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
+      if(a.nombreCliente > b.nombreCliente){
+        return 1;
+      } else if (a.nombreCliente < b.nombreCliente) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });    
+  }
+  orderByOriginal () {
+    this.orderByPresupuesto()
+    this.orderByNombre()
+    this.orderByDate();
   }
 }

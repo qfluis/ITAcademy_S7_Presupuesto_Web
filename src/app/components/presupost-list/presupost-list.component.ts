@@ -17,4 +17,14 @@ export class PresupostListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  orderByPresupuesto(){
+    this.presupuestoService.orderByPresupuesto();
+  }
+  orderByFecha(){
+    this.presupuestoService.orderByDate();
+  }
+  orderByOriginal(){
+    this.presupuestoService.orderByOriginal();
+  }
+
 }
