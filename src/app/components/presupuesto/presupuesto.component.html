@@ -6,3 +6,15 @@
     <div><input class="form-check-input" name="adds" [(ngModel)]="itemsBudget.ads.checked" (change)="updateBudget()" type="checkbox" >&nbsp;<label class="form-check-label">Una campaña de Google Ads ({{itemsBudget.ads.price}}€)</label></div>
     <div>Precio: {{totalBudget}} €</div>
 </form>
+<hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">Presupuesto:</div><input #nombrePresupuesto class="col-6" type="text" placeholder="Nombre presupuesto" >
+        </div>
+        <div class="row">
+            <div class="col-3">Cliente: </div><input #nombreCliente class="col-6" type="text" placeholder="Nombre cliente" >
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="guardarPresupuesto()">Guardar</button>
+    <hr>

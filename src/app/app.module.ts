@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PanelComponent } from './components/panel/panel.component';
 import { SelectorNumericoComponent } from './components/selector-numerico/selector-numerico.component';
 import { PresupuestoPageComponent } from './pages/presupuesto/presupuesto-page.component';
+import { PresupostListComponent } from './components/presupost-list/presupost-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PresupuestoPageComponent } from './pages/presupuesto/presupuesto-page.c
     HomeComponent,
     PanelComponent,
     SelectorNumericoComponent,
-    PresupuestoPageComponent
+    PresupuestoPageComponent,
+    PresupostListComponent
   ],
   imports: [
     BrowserModule,

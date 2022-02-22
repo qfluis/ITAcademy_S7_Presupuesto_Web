@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemsBudget } from './interfaces';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PresupuestoService } from '../../services/presupuesto.service';
 
 
@@ -10,6 +9,10 @@ import { PresupuestoService } from '../../services/presupuesto.service';
   styleUrls: ['./presupuesto.component.scss']
 })
 export class PresupuestoComponent implements OnInit {
+
+  @ViewChild ("nombrePresupuesto") nombrePresupuesto!:ElementRef<HTMLInputElement>;
+  @ViewChild ("nombreCliente") nombreCliente!:ElementRef<HTMLInputElement>;
+
 
   get itemsBudget () {
     return this.presupuestoService.itemsBudget;
@@ -26,5 +29,16 @@ export class PresupuestoComponent implements OnInit {
 
   updateBudget(){    
     this.presupuestoService.calculateTotalBudget();    
+  }
+  guardarPresupuesto(){   
+    if (this.totalBudget > 0) {
+      const nombrePresupuesto = (this.nombrePresupuesto.nativeElement.value) ? this.nombrePresupuesto.nativeElement.value: "No especificado";
+      const nombreCliente = (this.nombreCliente.nativeElement.value) ? this.nombreCliente.nativeElement.value: "No especificado";
+      this.presupuestoService.guardarPresupuesto(nombrePresupuesto, nombreCliente); 
+
+      this.presupuestoService.resetPresupuesto();
+      this.nombrePresupuesto.nativeElement.value = "";
+      this.nombreCliente.nativeElement.value = "";
+    }   
   }
 }

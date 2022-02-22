@@ -1,0 +1,16 @@
+<table *ngIf="listaPresupuestos.length > 0" class="table">
+    <thead>
+        <tr>
+            <th>Presupuesto</th>
+            <th>Cliente</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listaPresupuestos">
+            <td>{{item.nombrePresupuesto}}</td>
+            <td>{{item.nombreCliente}}</td>
+            <td>{{item.totalBudget}}</td>
+        </tr>
+    </tbody>
+</table>

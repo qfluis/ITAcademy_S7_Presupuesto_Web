@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { WebDetails } from '../components/panel/interfaces';
-import { ItemsBudget } from '../components/presupuesto/interfaces';
+import { ItemsBudget, Presupuesto, WebDetails } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PresupuestoService {
+
+  listaPresupuestos:Presupuesto[] = [];
 
   totalBudget:number = 0;
 
@@ -52,18 +53,27 @@ export class PresupuestoService {
     this.totalBudget = total;
     */
   }
-
-  /* BORRAR
-  updateBudget(itemsBudget: ItemsBudget) {
-    this.itemsBudget = itemsBudget;
-    this.calculateTotalBudget();
+  guardarPresupuesto(nombrePresupuesto:string, nombreCliente:string) {
+    this.listaPresupuestos.push(
+      {
+        nombreCliente: nombreCliente,
+        nombrePresupuesto: nombrePresupuesto,
+        itemsBudget: this.itemsBudget,
+        webDetails: this.webDetails,
+        totalBudget: this.totalBudget
+      }
+    );
   }
-
-  updateWebDetails(webDetails: WebDetails) {
-    if(webDetails.languages<1) webDetails.languages = 1;
-    if(webDetails.pages<1) webDetails.pages = 1 
-    this.webDetails = webDetails;    
-    this.calculateTotalBudget();
+  resetPresupuesto(){
+    this.itemsBudget = {
+      web: {checked: false, price: 500},
+      seo: {checked: false, price: 300},
+      ads: {checked: false, price: 200}
+    }
+    this.webDetails = {
+      pages: 1,
+      languages: 1
+    };
+    this.totalBudget = 0;
   }
-  */
 }
