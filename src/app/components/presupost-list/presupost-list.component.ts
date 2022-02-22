@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Presupuesto } from 'src/app/interfaces/interfaces';
 import { PresupuestoService } from 'src/app/services/presupuesto.service';
 
 @Component({
@@ -8,25 +9,68 @@ import { PresupuestoService } from 'src/app/services/presupuesto.service';
 })
 export class PresupostListComponent implements OnInit {
 
-  get listaPresupuestos () {
+  
+  get listaPresupuestosOriginal () {
     return this.presupuestoService.listaPresupuestos;
   }
+  listaPresupuestos = [...this.listaPresupuestosOriginal];
+
+  @ViewChild('search') search!:ElementRef<HTMLInputElement>;
 
   constructor(private presupuestoService:PresupuestoService) {
-    this.presupuestoService.orderByOriginal();
+    this.orderByOriginal();
   }
 
   ngOnInit(): void {
   }
 
   orderByPresupuesto(){
-    this.presupuestoService.orderByPresupuesto();
+    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
+      if(a.nombrePresupuesto > b.nombrePresupuesto){
+        return 1;
+      } else if (a.nombrePresupuesto < b.nombrePresupuesto) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });   
   }
   orderByFecha(){
-    this.presupuestoService.orderByDate();
+    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
+      if(a.fecha < b.fecha){
+        return 1;
+      } else if (a.fecha > b.fecha) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }); 
+  }
+  orderByNombre () {
+    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
+      if(a.nombreCliente > b.nombreCliente){
+        return 1;
+      } else if (a.nombreCliente < b.nombreCliente) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });    
   }
   orderByOriginal(){
-    this.presupuestoService.orderByOriginal();
+    this.listaPresupuestos = [...this.listaPresupuestosOriginal];
+    //console.log(this.search);
+    //this.search.nativeElement.value = " ";
+    //this.orderByFecha();
+    //this.orderByPresupuesto();
+    //this.orderByNombre(); 
   }
 
+  filtrarPresupuesto(event:any) {
+    this.listaPresupuestos = [...this.listaPresupuestosOriginal];
+    const palabra = event.srcElement.value;
+    this.listaPresupuestos = this.listaPresupuestos.filter((item:Presupuesto)=>{
+      return item.nombrePresupuesto.toLowerCase().includes(palabra.toLowerCase());
+    });
+  }
 }

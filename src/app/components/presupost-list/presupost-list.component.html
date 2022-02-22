@@ -3,6 +3,8 @@
 <button type="button" class="btn btn-primary btn-sm me-1" (click)="orderByPresupuesto()">Presupuesto</button>
 <button type="button" class="btn btn-primary btn-sm me-1" (click)="orderByFecha()">Fecha</button>
 
+<h3>Buscar por:</h3>
+<input type="text" class="form-control" #search (change)="filtrarPresupuesto( $event )">
 <h3>Presupuestos</h3>
 <table *ngIf="listaPresupuestos.length > 0" class="table">
     <thead>

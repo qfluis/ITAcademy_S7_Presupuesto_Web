@@ -190,7 +190,6 @@ export class PresupuestoService {
       }
     );
     console.log(this.listaPresupuestos);
-    this.orderByOriginal();
   }
   resetPresupuesto(){
     this.itemsBudget = {
@@ -203,44 +202,6 @@ export class PresupuestoService {
       languages: 1
     };
     this.totalBudget = 0;
-  }
-  orderByPresupuesto () {
-    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
-      if(a.nombrePresupuesto > b.nombrePresupuesto){
-        return 1;
-      } else if (a.nombrePresupuesto < b.nombrePresupuesto) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });    
-  }
-  orderByDate () {
-    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
-      if(a.fecha < b.fecha){
-        return 1;
-      } else if (a.fecha > b.fecha) {
-        return -1;
-      } else {
-        return 0;
-      }
-    }); 
-  }
-  orderByNombre () {
-    this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
-      if(a.nombreCliente > b.nombreCliente){
-        return 1;
-      } else if (a.nombreCliente < b.nombreCliente) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });    
-  }
-  orderByOriginal () {
-    this.orderByDate();
-    this.orderByPresupuesto()
-    this.orderByNombre()
-    
-  }
+  }  
+
 }
