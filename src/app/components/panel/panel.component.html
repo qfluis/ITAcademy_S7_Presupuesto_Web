@@ -1,8 +1,33 @@
-<div class="panel container">
-    <div class="row align-items-center">    
-        <div class="col-7" >número de páginas</div><app-selector-numerico class="col-5" (onValueChange)="updatePages( $event )" ></app-selector-numerico>
-    </div>
-    <div class="row align-items-center">    
-        <div class="col-7">Número de idiomas</div><app-selector-numerico class="col-5" (onValueChange)="updateLanguages( $event )" ></app-selector-numerico>
-    </div>
+<div class="panel">
+        <div class="descripcion" >número de páginas</div>
+        <div class="selector-numero"><app-selector-numerico (onValueChange)="updatePages( $event )" ></app-selector-numerico></div>
+        <div class="info"><a data-bs-toggle="modal" data-bs-target="#modal1"><img class="p-0" src="assets/info.png" alt=""></a></div>
+
+        <br>
+
+        <div class="descripcion">Número de idiomas</div>
+        <div class="selector-numero"><app-selector-numerico (onValueChange)="updateLanguages( $event )" ></app-selector-numerico></div>
+        <div class="info"><a data-bs-toggle="modal" data-bs-target="#modal2"><img class="p-0" src="assets/info.png" alt=""></a></div>
+  </div>
+
+
+<!-- MODAL CUSTOM -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">        
+        <div class="modal-body">
+            Introducir el número de páginas en esta casilla
+        </div>      
+      </div>
+    </div> 
+</div>
+
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">        
+        <div class="modal-body">
+            Introducir el número de idiomas en esta casilla
+        </div>      
+      </div>
+    </div> 
 </div>

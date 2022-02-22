@@ -10,8 +10,6 @@ export class SelectorNumericoComponent {
 
   webForm: FormGroup;
 
-  //@Input() valorInicial:number = 1;
-
   @Output() onValueChange = new EventEmitter<number>();
   
   @ViewChild('inputControl') inputControl!: ElementRef<HTMLInputElement>;

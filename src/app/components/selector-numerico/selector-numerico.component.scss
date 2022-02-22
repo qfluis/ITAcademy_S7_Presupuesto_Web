@@ -3,7 +3,7 @@ input {
     border:none;
 }
 
-button {
+.btn-incremento {
     background-color: #F77754;
     color:white;
     //padding:0.5rem;
@@ -13,34 +13,6 @@ button {
     width:1.5rem;
     height:1.5rem;
 }
-
-img {
-    width: 20px;
-    height: 20px;
+div, form {
+    display:inline;
 }
-
-/*
-div {
-    margin:0.5rem;
-    display:flex;
-    align-items: center;
-}
-.error {
-    color:red;
-    font-weight: bold;
-}
-form {
-    display:inline-block;
-}
-
-
-button {
-    background-color: #F77754;
-    color:white;
-    //padding:0.5rem;
-    border:none;
-    border-radius: 0.5rem;
-    font-size: 1.5rem;
-    width:2rem;
-    height:2rem;
-}*/
