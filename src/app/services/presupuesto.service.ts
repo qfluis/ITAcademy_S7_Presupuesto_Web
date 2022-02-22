@@ -102,7 +102,31 @@ export class PresupuestoService {
           },
           "totalBudget": 200,
           "fecha": "2022-02-19"
-      }  
+      },
+      {
+        "nombreCliente": "Microsoft",
+        "nombrePresupuesto": "Consultoria SEO + Adds",
+        "itemsBudget": {
+            "web": {
+                "checked": false,
+                "price": 500
+            },
+            "seo": {
+                "checked": true,
+                "price": 300
+            },
+            "ads": {
+                "checked": true,
+                "price": 200
+            }
+        },
+        "webDetails": {
+            "pages": 1,
+            "languages": 1
+        },
+        "totalBudget": 500,
+        "fecha": "2022-02-10"
+    }  
   ];
 
   totalBudget:number = 0;
@@ -118,7 +142,8 @@ export class PresupuestoService {
     languages: 1
   };
 
-  constructor() { }
+  constructor() {
+  }
 
   calculateTotalBudget() {
     
@@ -192,9 +217,9 @@ export class PresupuestoService {
   }
   orderByDate () {
     this.listaPresupuestos = this.listaPresupuestos.sort((a:Presupuesto, b:Presupuesto)=>{
-      if(a.fecha > b.fecha){
+      if(a.fecha < b.fecha){
         return 1;
-      } else if (a.fecha < b.fecha) {
+      } else if (a.fecha > b.fecha) {
         return -1;
       } else {
         return 0;
@@ -213,8 +238,9 @@ export class PresupuestoService {
     });    
   }
   orderByOriginal () {
+    this.orderByDate();
     this.orderByPresupuesto()
     this.orderByNombre()
-    this.orderByDate();
+    
   }
 }

@@ -12,7 +12,9 @@ export class PresupostListComponent implements OnInit {
     return this.presupuestoService.listaPresupuestos;
   }
 
-  constructor(private presupuestoService:PresupuestoService) { }
+  constructor(private presupuestoService:PresupuestoService) {
+    this.presupuestoService.orderByOriginal();
+  }
 
   ngOnInit(): void {
   }
