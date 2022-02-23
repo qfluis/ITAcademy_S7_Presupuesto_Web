@@ -49,7 +49,6 @@ export class PresupuestoService {
 
     this.totalBudget = total;   
 
-    this.updateURL();
   }
 
   guardarPresupuesto(nombrePresupuesto:string, nombreCliente:string) {
@@ -117,17 +116,6 @@ export class PresupuestoService {
     this.listaPresupuestos = this.listaPresupuestosBD.filter((item:Presupuesto)=>{
       return item.nombrePresupuesto.toLowerCase().includes(palabra.toLowerCase());
     });
-  }
-
-  updateURL (){
-    //?web=1&seo=1&ads=1&pages=10&languages=5
-    const url = window.location.href.split("?")[0];
-    const params =`?web=${this.itemsBudget.web.checked}&seo=${this.itemsBudget.seo.checked}&ads=${this.itemsBudget.ads.checked}&pages=${this.webDetails.pages}&languages=${this.webDetails.languages}`;
-    console.log(url+params);
-    //window.location.href = url+params;
-  
-    
-
   }
 
 

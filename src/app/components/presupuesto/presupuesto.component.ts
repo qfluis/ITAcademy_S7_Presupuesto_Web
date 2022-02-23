@@ -16,6 +16,7 @@ export class PresupuestoComponent implements OnInit {
   @ViewChild ("nombrePresupuesto") nombrePresupuesto!:ElementRef<HTMLInputElement>;
   @ViewChild ("nombreCliente") nombreCliente!:ElementRef<HTMLInputElement>;
 
+  estadoWeb:string = "false";
 
   get itemsBudget () {
     return this.presupuestoService.itemsBudget;
@@ -30,7 +31,7 @@ export class PresupuestoComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit(): void {
-    this.cargarParametros()
+    this.cargarParametros();
 
 
   }
@@ -49,8 +50,7 @@ export class PresupuestoComponent implements OnInit {
     if (languages > 0) this.presupuestoService.webDetails.languages = languages;
     
 
-    this.presupuestoService.calculateTotalBudget();
-    console.log(this.presupuestoService.webDetails);
+    this.presupuestoService.calculateTotalBudget();    
   }
 
   updateBudget(){    
@@ -66,5 +66,16 @@ export class PresupuestoComponent implements OnInit {
       this.nombrePresupuesto.nativeElement.value = "";
       this.nombreCliente.nativeElement.value = "";
     }   
+  }
+
+  compartirURL (){
+    const url = window.location.href.split("?")[0];
+    const params =`?web=${this.presupuestoService.itemsBudget.web.checked}&seo=${this.presupuestoService.itemsBudget.seo.checked}&ads=${this.presupuestoService.itemsBudget.ads.checked}&pages=${this.presupuestoService.webDetails.pages}&languages=${this.presupuestoService.webDetails.languages}`;
+    
+    navigator.clipboard.writeText(url+params);
+    alert("Enlace a presupuesto guardado en portapapeles.\nConseguí leer los parametros pero no escribirlos en tiempo real en la barra de dierecciones.");
+    window.location.href = url+params; 
+  
+
   }
 }
