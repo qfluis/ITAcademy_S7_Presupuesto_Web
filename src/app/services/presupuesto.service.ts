@@ -28,7 +28,7 @@ export class PresupuestoService {
     
     this.listaPresupuestosBD = JSON.parse(localStorage.getItem("listaPresupuestos") || "[]");
     this.listaPresupuestos = [...this.listaPresupuestosBD];
-  }
+  }  
 
   calculateTotalBudget() {
     
@@ -47,9 +47,11 @@ export class PresupuestoService {
     if (items.seo.checked) total+=items.seo.price;
     if (items.ads.checked) total+=items.ads.price;
 
-    this.totalBudget = total;
-    
+    this.totalBudget = total;   
+
+    this.updateURL();
   }
+
   guardarPresupuesto(nombrePresupuesto:string, nombreCliente:string) {
     const today:Date = new Date();
     const fecha = today.toISOString().split("T")[0] + " " + today.toISOString().split("T")[1].substring(0,8);
@@ -115,6 +117,17 @@ export class PresupuestoService {
     this.listaPresupuestos = this.listaPresupuestosBD.filter((item:Presupuesto)=>{
       return item.nombrePresupuesto.toLowerCase().includes(palabra.toLowerCase());
     });
+  }
+
+  updateURL (){
+    //?web=1&seo=1&ads=1&pages=10&languages=5
+    const url = window.location.href.split("?")[0];
+    const params =`?web=${this.itemsBudget.web.checked}&seo=${this.itemsBudget.seo.checked}&ads=${this.itemsBudget.ads.checked}&pages=${this.webDetails.pages}&languages=${this.webDetails.languages}`;
+    console.log(url+params);
+    //window.location.href = url+params;
+  
+    
+
   }
 
 

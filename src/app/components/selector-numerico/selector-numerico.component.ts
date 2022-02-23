@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,9 +6,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './selector-numerico.component.html',
   styleUrls: ['./selector-numerico.component.scss']
 })
-export class SelectorNumericoComponent {
+export class SelectorNumericoComponent implements OnInit {
 
   webForm: FormGroup;
+  @Input () valorInicial:number = 1;
 
   @Output() onValueChange = new EventEmitter<number>();
   
@@ -16,8 +17,15 @@ export class SelectorNumericoComponent {
 
 
   constructor(private _builder:FormBuilder) {
+    // En constructor no puedo acceder al valorInicial.
     this.webForm = this._builder.group({
-      input:[1,Validators.compose([Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)])]    
+      input:[this.valorInicial,Validators.compose([Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)])]    
+    });
+    
+  }
+  ngOnInit(): void {
+    this.webForm = this._builder.group({
+      input:[this.valorInicial,Validators.compose([Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)])]    
     });
   }
 

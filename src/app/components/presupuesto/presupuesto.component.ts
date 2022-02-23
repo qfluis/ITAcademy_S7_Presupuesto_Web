@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { PresupuestoService } from '../../services/presupuesto.service';
+
+
 
 
 
@@ -22,9 +25,32 @@ export class PresupuestoComponent implements OnInit {
     return this.presupuestoService.totalBudget;
   }
   
-  constructor(private presupuestoService:PresupuestoService) {}
+  constructor(
+    private presupuestoService:PresupuestoService, 
+    private router: Router) {}
 
   ngOnInit(): void {
+    this.cargarParametros()
+
+
+  }
+
+  cargarParametros(){
+    const params = this.router.parseUrl(this.router.url).queryParams;
+    if (params["web"] == "true") this.presupuestoService.itemsBudget.web.checked = true;
+    if (params["seo"] == "true") this.presupuestoService.itemsBudget.seo.checked = true;
+    if (params["ads"] == "true") this.presupuestoService.itemsBudget.ads.checked = true;
+
+    
+    const pages = parseInt(params["pages"]);
+    const languages = parseInt(params["languages"]);
+
+    if (pages > 0) this.presupuestoService.webDetails.pages = pages;
+    if (languages > 0) this.presupuestoService.webDetails.languages = languages;
+    
+
+    this.presupuestoService.calculateTotalBudget();
+    console.log(this.presupuestoService.webDetails);
   }
 
   updateBudget(){    
