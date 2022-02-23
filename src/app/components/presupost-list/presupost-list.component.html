@@ -1,0 +1,27 @@
+<h3>Orden por:</h3>
+<button type="button" class="btn btn-primary btn-sm me-1" (click)="orderByOriginal()">Original</button>
+<button type="button" class="btn btn-primary btn-sm me-1" (click)="orderByPresupuesto()">Presupuesto</button>
+<button type="button" class="btn btn-primary btn-sm me-1" (click)="orderByFecha()">Fecha</button>
+
+<h3>Buscar por:</h3>
+<input id="search" type="text" class="form-control" #search (keyup)="filtrarPresupuesto()" >
+
+<h3>Presupuestos</h3>
+<table *ngIf="listaPresupuestos.length > 0" class="table">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Presupuesto</th>
+            <th>Fecha</th>
+            <th>Total</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listaPresupuestos">
+            <td>{{item.nombreCliente}}</td>
+            <td>{{item.nombrePresupuesto}}</td>
+            <td>{{item.fecha}}</td>
+            <td>{{item.totalBudget}}</td>
+        </tr>
+    </tbody>
+</table>

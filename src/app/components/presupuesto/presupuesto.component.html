@@ -1,0 +1,21 @@
+<p>¿Qué quieres hacer?</p>
+<form>
+    <div><input class="form-check-input" name="web" [(ngModel)]="itemsBudget.web.checked" (change)="updateBudget()" type="checkbox" >&nbsp;<label class="form-check-label">Una página web ({{itemsBudget.web.price}}€)</label></div>
+    <app-panel *ngIf="itemsBudget.web.checked"></app-panel>
+    <div><input class="form-check-input" name="seo" [(ngModel)]="itemsBudget.seo.checked" (change)="updateBudget()" type="checkbox" >&nbsp;<label class="form-check-label">Una consultoria SEO ({{itemsBudget.seo.price}}€)</label></div>
+    <div><input class="form-check-input" name="adds" [(ngModel)]="itemsBudget.ads.checked" (change)="updateBudget()" type="checkbox" >&nbsp;<label class="form-check-label">Una campaña de Google Ads ({{itemsBudget.ads.price}}€)</label></div>
+    <div>Precio: {{totalBudget}} €</div>
+</form>
+<hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">Presupuesto:</div><input #nombrePresupuesto class="col-6" type="text" placeholder="Nombre presupuesto" >
+        </div>
+        <div class="row">
+            <div class="col-3">Cliente: </div><input #nombreCliente class="col-6" type="text" placeholder="Nombre cliente" >
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary me-1" (click)="guardarPresupuesto()">Guardar</button>
+    <button class="btn btn-primary" (click)="compartirURL()">Compartir</button>
+    <hr>

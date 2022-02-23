@@ -1,0 +1,11 @@
+        <div class="col p-0"><button class="btn-incremento" (click)="add(1)">+</button></div>
+        <form class="col p-0" [formGroup]="webForm"> 
+            <input formControlName="input"                                         
+                                        #inputControl
+                                        type="text" 
+                                        (change)="inputChange()">     
+        </form>    
+        <div class="col p-0"><button class="btn-incremento" (click)="add(-1)">-</button></div>
+
+
+<!--<p *ngIf="webForm.invalid" class="error">Introduce valores numéricos válidos</p>-->
